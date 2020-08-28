@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="br.com.pulse.mapper.ItemPedidoMapper">
+
+
+    <select id="addPedido"  resultType="java.lang.Integer" >
+        insert into "Pedido" (id_estoque,tipo_movimento) values (#{estoque},#{tipoMovimento}) RETURNING id_pedido;
+    </select>
+
+    <insert id="addItemPedido">
+
+        insert into "PedidoProduto" (id_produto, id_pedido, quantidade) values
+        <foreach collection="lista" item="item" open="(" separator="),(" close=")">
+            #{item.id_produto},
+            #{pedido},
+            #{item.quantidade}
+        </foreach>
+    </insert>
+
+</mapper>

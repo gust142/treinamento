@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="br.com.pulse.mapper.ItemEstoqueMapper">
+
+
+    <insert id="addItemEstoque">
+        insert into "ProdutoEstoque" (id_produto ,id_estoque ,quantidade_total ) values (#{item.id_produto},#{item.id_estoque},#{item.quantidade_total})
+    </insert>
+    <update id="updateItemEstoque">
+        update "ProdutoEstoque" set quantidade_total  = #{item.quantidade_total} where id_produto = #{item.id_produto} and id_estoque = #{item.id_estoque}
+    </update>
+
+    <select id="findItemByEstoque" resultType="br.com.pulse.model.ItemPedidoEstoque">
+
+        select * from "ProdutoEstoque" pe where id_estoque  = #{id_estoque}
+
+    </select>
+</mapper>

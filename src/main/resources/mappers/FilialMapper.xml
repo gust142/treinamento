@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="br.com.pulse.mapper.FilialMapper">
+    <insert id="addEstoque">
+
+        insert into treinamento.public."Estoque" (id_filial) values (#{filial});
+    </insert>
+
+
+    <select id="findFilialById" resultType="br.com.pulse.model.Filial">
+
+        select id_filial, nome_filial from treinamento.public."Filial" f where f.id_filial = #{filial};
+
+
+    </select>
+    <select id="findEstoqueIdByFilial" resultType="java.lang.Integer">
+
+        select id_estoque from treinamento.public."Estoque" e where e.id_filial = #{filial};
+
+    </select>
+</mapper>
